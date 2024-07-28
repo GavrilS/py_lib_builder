@@ -1,6 +1,8 @@
 import os
 from git import Repo
 
+DEFAULT_REPO_DIR = '/tmp/build_package/'
+
 class GitGateway:
 
     def __init__(self, link, path):
@@ -26,7 +28,7 @@ class GitGateway:
         
     def _extract_repo_path_from_link(self, link):
         path = link.split('/')[-1].replace('.git', '')
-        return f"/tmp/{path}"
+        return f"{DEFAULT_REPO_DIR}{path}"
 
     def _verify_repo_configs(self):
         return self.link or self.path
