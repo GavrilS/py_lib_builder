@@ -1,28 +1,48 @@
 import os
 from git import Repo
 
+class GitGateway:
 
-def main(link, path=None):
-    if not link and not path:
-        print('Either path or link needs to be specified!')
-        return
-    elif not path:
-        path = extract_repo_path_from_link(link)
+    def __init__(self, link, path):
+        self.link = link
+        self.path = path
+
+    def pull_repo(self, link, path=None):
+        if not self._verify_repo_configs():
+            print('You need to provide either a path to an existing repo or a git link to clone the repo from!')
+            return None
+        
+        repo = None
+        if os.path.isdir(path):
+            repo = Repo(path)
+        else:
+            repo = Repo.clone_from(link, path)
+        
+        if repo.bare:
+            print('The provided repo is empty!')
+            return None
+        
+        return path
+        
+    def _extract_repo_path_from_link(self, link):
+        path = link.split('/')[-1].replace('.git', '')
+        return f"/tmp/{path}"
+
+    def _verify_repo_configs(self):
+        return self.link or self.path
+
+    @property
+    def link(self):
+        return self._link
     
-    repo = None
-    if os.path.isdir(path):
-        repo = Repo(path)
-    else:
-        repo = Repo.clone_from(link, path)
+    @link.setter
+    def link(self, link):
+        self._link = link
     
-    if repo.bare:
-        print('The repo is empty!')
-        return
+    @property
+    def path(self):
+        return self._path
     
-    pass
-
-
-
-def extract_repo_path_from_link(link):
-    path = link.split('/')[-1].replace('.git', '')
-    return f"/tmp/{path}"
+    @path.setter
+    def path(self, path):
+        self._path = path
