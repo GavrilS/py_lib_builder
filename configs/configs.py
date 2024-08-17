@@ -2,6 +2,7 @@ import sys
 import json
 
 CONF_FILE = 'defaults.json'
+ENV_PATH = '/tmp/env/bin/'
 
 
 class Configs:
@@ -67,7 +68,7 @@ class Configs:
             with open(conf_file, 'r') as f:
                 conf = json.load(f.readlines())
         
-        conf_verifier = self.verify_configs(conf)
+        conf_verifier = self._verify_configs(conf)
 
         if not conf_verifier:
             print('Sorry, the provided configs are wrong or missing needed information!')
@@ -79,5 +80,11 @@ class Configs:
         self.destination = conf.get('destination')
         self.env_path = conf.get('environment_path')
         
-    def verify_configs(self, conf):
-        pass
+    def _verify_configs(self, conf):
+        flag = False
+        if conf.get('project_name', None) and conf.get('project_directory', None):
+            flag = True
+        elif conf.get('project_repo', None) and conf.get('destination', None):
+            flag = True
+        
+        return flag and conf.get('environment_path', None)
