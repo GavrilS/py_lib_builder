@@ -1,3 +1,4 @@
+import sys
 import json
 
 CONF_FILE = 'defaults.json'
@@ -48,12 +49,35 @@ class Configs:
     def env_path(self, env_path):
         self._env_path = env_path
 
-    def set_configs(self, conf=None, conf_file=CONF_FILE):
+    def _set_configs(self, conf=None, conf_file=CONF_FILE):
         if not conf:
-            if not conf_file.endswith('.json'):
-                raise Exception('The configuration file needs to be json formatted!')
+            count = 0
+            end_count = 3
+            while True:
+                if not conf_file.endswith('.json'):
+                    # raise Exception('The configuration file needs to be json formatted!')
+                    print(f"The config file provided is not a valid json formatted file! You can enter a new path now. You have {end_count - count} attempts left.")
+                    conf_file = input('Please provide the path to the new json config file:')
+                    count += 1
+                    if count >= end_count:
+                        break
+                else:
+                    break
             
             with open(conf_file, 'r') as f:
                 conf = json.load(f.readlines())
         
+        conf_verifier = self.verify_configs(conf)
+
+        if not conf_verifier:
+            print('Sorry, the provided configs are wrong or missing needed information!')
+            sys.exit(1)
         
+        self.project_name = conf.get('project_name')
+        self.project_dir = conf.get('project_directory')
+        self.project_repo = conf.get('project_repo')
+        self.destination = conf.get('destination')
+        self.env_path = conf.get('environment_path')
+        
+    def verify_configs(self, conf):
+        pass
