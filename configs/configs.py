@@ -50,7 +50,7 @@ class Configs:
     def env_path(self, env_path):
         self._env_path = env_path
 
-    def _set_configs(self, conf=None, conf_file=CONF_FILE):
+    def set_configs(self, conf=None, conf_file=CONF_FILE):
         if not conf:
             count = 0
             end_count = 3
@@ -64,6 +64,9 @@ class Configs:
                         break
                 else:
                     break
+            
+            if not conf_file.endswith('.json'):
+                raise Exception('Conf file not properly specified!')
             
             with open(conf_file, 'r') as f:
                 conf = json.load(f.readlines()).get('project_structure', None)

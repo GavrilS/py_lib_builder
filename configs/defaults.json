@@ -6,7 +6,7 @@
         "destination": "",
         "environment_path": "/tmp/env/bin/"
     },
-    "project_setup": {
+    "project_options": {
         "name": "",
         "version": "0.1.0",
         "packages": [],
