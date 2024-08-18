@@ -7,7 +7,7 @@ ENV_PATH = '/tmp/env/bin/'
 
 class Configs:
 
-    def __init__(self, conf=None, conf_file=CONF_FILE):
+    def __init__(self):
         pass
 
     @property
