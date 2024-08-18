@@ -66,7 +66,7 @@ class Configs:
                     break
             
             with open(conf_file, 'r') as f:
-                conf = json.load(f.readlines())
+                conf = json.load(f.readlines()).get('project_structure', None)
         
         conf_verifier = self._verify_configs(conf)
 

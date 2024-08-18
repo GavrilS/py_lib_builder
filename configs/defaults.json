@@ -1,7 +1,12 @@
 {
-    "project_name": "",
-    "project_directory": "",
-    "project_repo": "",
-    "destination": "",
-    "environment_path": "/tmp/env/bin/"
+    "project_structure": {
+        "project_name": "",
+        "project_directory": "",
+        "project_repo": "",
+        "destination": "",
+        "environment_path": "/tmp/env/bin/"
+    },
+    "project_setup": {
+        
+    }
 }
