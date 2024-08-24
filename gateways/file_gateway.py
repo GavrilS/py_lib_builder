@@ -7,6 +7,10 @@ class FileGateway:
     def __init__(self):
         pass
 
+    def create_setup_file(path, file, content):
+        with open(f"{path}/{file}", 'w') as f:
+            f.write(content)
+
     def copy_project_to_work_dir(project_src, work_dir):
         # cmd = f"mv -rf {project_src} {work_dir}"
         cmd = ['mv', '-rf', project_src, work_dir]
