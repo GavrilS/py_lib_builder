@@ -13,42 +13,26 @@ class Configs:
     @property
     def project_name(self):
         return self._project_name
-    
-    @project_name.setter
-    def project_name(self, project_name):
-        self._project_name = project_name
 
     @property
     def project_dir(self):
         return self._project_dir
-    
-    @project_dir.setter
-    def project_dir(self, project_dir):
-        self._project_dir = project_dir
 
     @property
     def project_repo(self):
         return self._project_repo
-    
-    @project_repo.setter
-    def project_repo(self, project_repo):
-        self._project_repo = project_repo
 
     @property
     def destination(self):
         return self._destination
     
-    @destination.setter
-    def destination(self, destination):
-        self._destination = destination
-    
     @property
     def env_path(self):
         return self._env_path
     
-    @env_path.setter
-    def env_path(self, env_path):
-        self._env_path = env_path
+    @property
+    def env_name(self):
+        return self._env_name
 
     def set_configs(self, conf=None, conf_file=CONF_FILE):
         if not conf:
@@ -77,11 +61,12 @@ class Configs:
             print('Sorry, the provided configs are wrong or missing needed information!')
             sys.exit(1)
         
-        self.project_name = conf.get('project_name')
-        self.project_dir = conf.get('project_directory')
-        self.project_repo = conf.get('project_repo')
-        self.destination = conf.get('destination')
-        self.env_path = conf.get('environment_path')
+        self._project_name = conf.get('project_name')
+        self._project_dir = conf.get('project_directory')
+        self._project_repo = conf.get('project_repo')
+        self._destination = conf.get('destination')
+        self._env_path = conf.get('environment_path')
+        self._env_name = conf.get('environment_name')
         
     def _verify_configs(self, conf):
         flag = False

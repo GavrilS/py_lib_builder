@@ -12,10 +12,6 @@ class ProjectOptions:
     @property
     def conf(self):
         return self._conf
-    
-    @conf.setter
-    def conf(self, conf):
-        self._conf = conf
 
     def load_project_options(self, conf=None, conf_file=CONF_FILE):
         if not conf:
@@ -44,7 +40,7 @@ class ProjectOptions:
             print('Sorry, the provided configs are wrong or missing needed information!')
             sys.exit(1)
 
-        self.conf = conf
+        self._conf = conf
 
     def _verify_configs(self, conf):
         flag = True

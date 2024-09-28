@@ -4,7 +4,8 @@
         "project_directory": "",
         "project_repo": "",
         "destination": "",
-        "environment_path": "/tmp/env/bin/"
+        "environment_path": "/tmp/",
+        "environment_name": "env"
     },
     "project_options": {
         "name": "",
