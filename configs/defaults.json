@@ -1,16 +1,16 @@
 {
     "project_structure": {
-        "project_name": "",
-        "project_directory": "",
+        "project_name": "imports/example_module",
+        "project_directory": "/mnt/c/Users/Gari/git/python/sandbox/",
         "project_repo": "",
-        "destination": "",
-        "environment_path": "/tmp/",
+        "destination": "/tmp/examplemodule",
+        "environment_path": "/mnt/c/Users/Gari/git/",
         "environment_name": "env"
     },
     "project_options": {
-        "name": "",
+        "name": "example_project",
         "version": "0.1.0",
-        "packages": [],
+        "packages": ["examplemodule", "examplemodule.*"],
         "install_requires": []
     }
 }
