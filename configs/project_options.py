@@ -32,7 +32,7 @@ class ProjectOptions:
                 raise Exception('Conf file not properly specified!')
             
             with open(conf_file, 'r') as f:
-                conf = json.load(f.readlines()).get('project_structure', None)
+                conf = json.load(f.readlines()).get('project_options', None)
 
         conf_verified = self._verify_configs(conf)
 

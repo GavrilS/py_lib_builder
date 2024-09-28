@@ -75,4 +75,4 @@ class Configs:
         elif conf.get('project_repo', None) and conf.get('destination', None):
             flag = True
         
-        return flag and conf.get('environment_path', None)
+        return flag and conf.get('environment_path', None) and conf.get('environment_name', None)
