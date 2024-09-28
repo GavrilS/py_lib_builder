@@ -14,7 +14,7 @@ class FileGateway:
     def verify_project_exists(self, project_path):
         return os.isdir(project_path)
 
-    def copy_project_to_work_dir(project_src, work_dir):
+    def copy_project_to_work_dir(self, project_src, work_dir):
         # cmd = f"mv -rf {project_src} {work_dir}"
         cmd = ['mv', '-rf', project_src, work_dir]
 
@@ -23,7 +23,7 @@ class FileGateway:
         print('Output of the "copy_project_to_work_dir" command: ', stdout)
         print('Errors resulting from the command: ', stderr)
 
-    def clear_work_dir(work_dir):
+    def clear_work_dir(self, work_dir):
         cmd = ['rm', '-rf', work_dir]
 
         ps = Popen(cmd, stdout=PIPE, stderr=PIPE)
