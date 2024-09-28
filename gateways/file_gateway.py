@@ -11,6 +11,9 @@ class FileGateway:
         with open(f"{path}/{file}", 'w') as f:
             f.write(content)
 
+    def verify_project_exists(self, project_path):
+        return os.isdir(project_path)
+
     def copy_project_to_work_dir(project_src, work_dir):
         # cmd = f"mv -rf {project_src} {work_dir}"
         cmd = ['mv', '-rf', project_src, work_dir]
