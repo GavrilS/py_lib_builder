@@ -13,6 +13,7 @@ class EnvGateway:
         return os.isdir(f"{env_path}{env_name}")
 
     def setup_env(self, env_path=DEFAULT_ENV_PATH, env_name=DEFAULT_ENV_NAME):
+        print('Setting up environment!')
         if not self._check_for_existing_env(env_path, env_name):
             cmd = ['python3', '-m', 'venv', f"{env_path}{env_name}"]
 
